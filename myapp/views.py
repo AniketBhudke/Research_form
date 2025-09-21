@@ -12,8 +12,9 @@ def Contact_view(request):
             contact = form.save()
             purposes = request.POST.getlist('purposes')  # ✅ This is already a Python list
         
-            contact.save()            # save to DB
-            return redirect('success') # go to success page
+            contact.save()   
+            return redirect('success')
+            return HttpResponse("Form submitted successfully!")                # save to DB # go to success page
     else:
         form = ContactForm()              # empty form for GET request
 
