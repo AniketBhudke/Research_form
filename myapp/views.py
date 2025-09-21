@@ -1,12 +1,18 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import ContactForm
 import pandas as pd
+from django.db import models
+from .models import Contact
 
 def Contact_view(request):
     if request.method == "POST":
         form = ContactForm(request.POST)   # form filled with POST data
         if form.is_valid():
-            form.save()                   # save to DB
+            contact = form.save()
+            purposes = request.POST.getlist('purposes')  # ✅ This is already a Python list
+        
+            contact.save()            # save to DB
             return redirect('success') # go to success page
     else:
         form = ContactForm()              # empty form for GET request

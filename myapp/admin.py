@@ -3,4 +3,6 @@ from django.contrib import admin
 # Register your models here.
 from .models import Contact
 
-admin.site.register(Contact)
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email', 'year', 'department', 'tools', 'accuracy']
