@@ -23,3 +23,31 @@ def Contact_view(request):
 def success_view(request):
         return render(request, 'myapp/success.html')
 
+# def export_contacts_csv(request):
+#     # Create the HttpResponse object with CSV headers
+#     response = HttpResponse(
+#         content_type='text/csv',
+#         headers={'Content-Disposition': 'attachment; filename="contacts.csv"'},
+#     )
+
+#     writer = csv.writer(response)
+    
+#     # Write the header row
+#     writer.writerow(['Name', 'Email', 'Year', 'Department', 'Tools', 'Purposes', 'Accuracy'])
+    
+#     # Fetch all contacts from DB
+#     contacts = Contact.objects.all()
+    
+#     # Write data rows
+#     for contact in contacts:
+#         writer.writerow([
+#             contact.name,
+#             contact.email,
+#             contact.year,
+#             contact.department,
+#             contact.tools,
+#             ", ".join(contact.purposes),  # assuming purposes is a list
+#             contact.accuracy
+#         ])
+    
+#     return response
